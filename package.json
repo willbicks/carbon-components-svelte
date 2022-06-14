@@ -49,9 +49,6 @@
     ],
     "*.{svelte,js,md}": "prettier --write"
   },
-  "prettier": {
-    "svelteStrictMode": true
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/carbon-design-system/carbon-components-svelte.git"
