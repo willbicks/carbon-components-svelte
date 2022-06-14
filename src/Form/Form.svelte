@@ -5,8 +5,8 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <form
-  class:bx--form="{true}"
-  bind:this="{ref}"
+  class:bx--form={true}
+  bind:this={ref}
   {...$$restProps}
   on:click
   on:keydown

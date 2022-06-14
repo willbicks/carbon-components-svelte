@@ -95,11 +95,11 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  class:bx--form-item="{true}"
-  class:bx--text-input-wrapper="{true}"
-  class:bx--password-input-wrapper="{!isFluid}"
-  class:bx--text-input-wrapper--light="{light}"
-  class:bx--text-input-wrapper--inline="{inline}"
+  class:bx--form-item={true}
+  class:bx--text-input-wrapper={true}
+  class:bx--password-input-wrapper={!isFluid}
+  class:bx--text-input-wrapper--light={light}
+  class:bx--text-input-wrapper--inline={inline}
   on:click
   on:mouseover
   on:mouseenter
@@ -107,13 +107,13 @@
 >
   {#if inline}
     <label
-      for="{id}"
-      class:bx--label="{true}"
-      class:bx--visually-hidden="{hideLabel}"
-      class:bx--label--disabled="{disabled}"
-      class:bx--label--inline="{inline}"
-      class:bx--label--inline--sm="{inline && size === 'sm'}"
-      class:bx--label--inline--xl="{inline && size === 'xl'}"
+      for={id}
+      class:bx--label={true}
+      class:bx--visually-hidden={hideLabel}
+      class:bx--label--disabled={disabled}
+      class:bx--label--inline={inline}
+      class:bx--label--inline--sm={inline && size === "sm"}
+      class:bx--label--inline--xl={inline && size === "xl"}
     >
       <slot name="labelText">
         {labelText}
@@ -121,9 +121,9 @@
     </label>
     {#if !isFluid && helperText}
       <div
-        class:bx--form__helper-text="{true}"
-        class:bx--form__helper-text--disabled="{disabled}"
-        class:bx--form__helper-text--inline="{inline}"
+        class:bx--form__helper-text={true}
+        class:bx--form__helper-text--disabled={disabled}
+        class:bx--form__helper-text--inline={inline}
       >
         {helperText}
       </div>
@@ -131,13 +131,13 @@
   {/if}
   {#if !inline && (labelText || $$slots.labelText)}
     <label
-      for="{id}"
-      class:bx--label="{true}"
-      class:bx--visually-hidden="{hideLabel}"
-      class:bx--label--disabled="{disabled}"
-      class:bx--label--inline="{inline}"
-      class:bx--label--inline--sm="{inline && size === 'sm'}"
-      class:bx--label--inline--xl="{inline && size === 'xl'}"
+      for={id}
+      class:bx--label={true}
+      class:bx--visually-hidden={hideLabel}
+      class:bx--label--disabled={disabled}
+      class:bx--label--inline={inline}
+      class:bx--label--inline--sm={inline && size === "sm"}
+      class:bx--label--inline--xl={inline && size === "xl"}
     >
       <slot name="labelText">
         {labelText}
@@ -145,13 +145,13 @@
     </label>
   {/if}
   <div
-    class:bx--text-input__field-outer-wrapper="{true}"
-    class:bx--text-input__field-outer-wrapper--inline="{inline}"
+    class:bx--text-input__field-outer-wrapper={true}
+    class:bx--text-input__field-outer-wrapper--inline={inline}
   >
     <div
-      class:bx--text-input__field-wrapper="{true}"
-      class:bx--text-input__field-wrapper--warning="{warn}"
-      data-invalid="{invalid || undefined}"
+      class:bx--text-input__field-wrapper={true}
+      class:bx--text-input__field-wrapper--warning={warn}
+      data-invalid={invalid || undefined}
     >
       {#if invalid}
         <WarningFilled class="bx--text-input__invalid-icon" />
@@ -163,29 +163,29 @@
         />
       {/if}
       <input
-        bind:this="{ref}"
-        data-invalid="{invalid || undefined}"
-        aria-invalid="{invalid || undefined}"
-        aria-describedby="{invalid ? errorId : warn ? warnId : undefined}"
-        id="{id}"
-        name="{name}"
-        placeholder="{placeholder}"
-        type="{type}"
-        value="{value ?? ''}"
-        disabled="{disabled}"
-        class:bx--text-input="{true}"
-        class:bx--password-input="{true}"
-        class:bx--text-input--light="{light}"
-        class:bx--text-input--invalid="{invalid}"
-        class:bx--text-input--warning="{warn}"
-        class:bx--text-input--sm="{size === 'sm'}"
-        class:bx--text-input--xl="{size === 'xl'}"
+        bind:this={ref}
+        data-invalid={invalid || undefined}
+        aria-invalid={invalid || undefined}
+        aria-describedby={invalid ? errorId : warn ? warnId : undefined}
+        {id}
+        {name}
+        {placeholder}
+        {type}
+        value={value ?? ""}
+        {disabled}
+        class:bx--text-input={true}
+        class:bx--password-input={true}
+        class:bx--text-input--light={light}
+        class:bx--text-input--invalid={invalid}
+        class:bx--text-input--warning={warn}
+        class:bx--text-input--sm={size === "sm"}
+        class:bx--text-input--xl={size === "xl"}
         {...$$restProps}
         on:change
         on:input
-        on:input="{({ target }) => {
+        on:input={({ target }) => {
           value = target.value;
-        }}"
+        }}
         on:keydown
         on:keyup
         on:focus
@@ -194,26 +194,26 @@
       />
       <button
         type="button"
-        disabled="{disabled}"
-        class:bx--text-input--password__visibility__toggle="{true}"
-        class:bx--btn="{true}"
-        class:bx--btn--icon-only="{true}"
-        class:bx--btn--disabled="{disabled}"
-        class:bx--tooltip__trigger="{true}"
-        class:bx--tooltip--a11y="{true}"
-        class:bx--tooltip--top="{tooltipPosition === 'top'}"
-        class:bx--tooltip--right="{tooltipPosition === 'right'}"
-        class:bx--tooltip--bottom="{tooltipPosition === 'bottom'}"
-        class:bx--tooltip--left="{tooltipPosition === 'left'}"
-        class:bx--tooltip--align-start="{tooltipAlignment === 'start'}"
-        class:bx--tooltip--align-center="{tooltipAlignment === 'center'}"
-        class:bx--tooltip--align-end="{tooltipAlignment === 'end'}"
-        on:click="{() => {
-          type = type === 'password' ? 'text' : 'password';
-        }}"
+        {disabled}
+        class:bx--text-input--password__visibility__toggle={true}
+        class:bx--btn={true}
+        class:bx--btn--icon-only={true}
+        class:bx--btn--disabled={disabled}
+        class:bx--tooltip__trigger={true}
+        class:bx--tooltip--a11y={true}
+        class:bx--tooltip--top={tooltipPosition === "top"}
+        class:bx--tooltip--right={tooltipPosition === "right"}
+        class:bx--tooltip--bottom={tooltipPosition === "bottom"}
+        class:bx--tooltip--left={tooltipPosition === "left"}
+        class:bx--tooltip--align-start={tooltipAlignment === "start"}
+        class:bx--tooltip--align-center={tooltipAlignment === "center"}
+        class:bx--tooltip--align-end={tooltipAlignment === "end"}
+        on:click={() => {
+          type = type === "password" ? "text" : "password";
+        }}
       >
         {#if !disabled}
-          <span class:bx--assistive-text="{true}">
+          <span class:bx--assistive-text={true}>
             {#if type === "text"}
               {hidePasswordLabel}
             {:else}{showPasswordLabel}{/if}
@@ -227,21 +227,21 @@
       </button>
     </div>
     {#if !isFluid && invalid}
-      <div class:bx--form-requirement="{true}" id="{errorId}">
+      <div class:bx--form-requirement={true} id={errorId}>
         {invalidText}
       </div>
     {/if}
     {#if !invalid && !warn && !isFluid && !inline}
       <div
-        class:bx--form__helper-text="{true}"
-        class:bx--form__helper-text--disabled="{disabled}"
-        class:bx--form__helper-text--inline="{inline}"
+        class:bx--form__helper-text={true}
+        class:bx--form__helper-text--disabled={disabled}
+        class:bx--form__helper-text--inline={inline}
       >
         {helperText}
       </div>
     {/if}
     {#if !isFluid && !invalid && warn}
-      <div class:bx--form-requirement="{true}" id="{warnId}">{warnText}</div>
+      <div class:bx--form-requirement={true} id={warnId}>{warnText}</div>
     {/if}
   </div>
 </div>

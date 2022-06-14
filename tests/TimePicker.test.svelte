@@ -3,7 +3,7 @@
 </script>
 
 <TimePicker
-  spellcheck="{false}"
+  spellcheck={false}
   labelText="Cron job"
   placeholder="hh:mm"
   on:paste

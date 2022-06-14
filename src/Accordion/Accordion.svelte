@@ -34,8 +34,8 @@
 {#if skeleton}
   <AccordionSkeleton
     {...$$restProps}
-    align="{align}"
-    size="{size}"
+    {align}
+    {size}
     on:click
     on:mouseover
     on:mouseenter
@@ -43,11 +43,11 @@
   />
 {:else}
   <ul
-    class:bx--accordion="{true}"
-    class:bx--accordion--start="{align === 'start'}"
-    class:bx--accordion--end="{align === 'end'}"
-    class:bx--accordion--sm="{size === 'sm'}"
-    class:bx--accordion--xl="{size === 'xl'}"
+    class:bx--accordion={true}
+    class:bx--accordion--start={align === "start"}
+    class:bx--accordion--end={align === "end"}
+    class:bx--accordion--sm={size === "sm"}
+    class:bx--accordion--xl={size === "xl"}
     {...$$restProps}
     on:click
     on:mouseover

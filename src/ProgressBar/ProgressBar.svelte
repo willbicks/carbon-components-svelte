@@ -39,18 +39,18 @@
 </script>
 
 <div
-  class:bx--progress-bar="{true}"
-  class:bx--progress-bar--indeterminate="{indeterminate}"
-  class:bx--progress-bar--big="{size === 'md'}"
-  class:bx--progress-bar--small="{size === 'sm'}"
-  class:bx--progress-bar--inline="{kind === 'inline'}"
-  class:bx--progress-bar--indented="{kind === 'indented'}"
+  class:bx--progress-bar={true}
+  class:bx--progress-bar--indeterminate={indeterminate}
+  class:bx--progress-bar--big={size === "md"}
+  class:bx--progress-bar--small={size === "sm"}
+  class:bx--progress-bar--inline={kind === "inline"}
+  class:bx--progress-bar--indented={kind === "indented"}
   {...$$restProps}
 >
   <label
-    for="{id}"
-    class:bx--progress-bar__label="{true}"
-    class:bx--visually-hidden="{hideLabel}"
+    for={id}
+    class:bx--progress-bar__label={true}
+    class:bx--visually-hidden={hideLabel}
   >
     <slot name="labelText">
       {labelText}
@@ -58,20 +58,20 @@
   </label>
   <div
     role="progressbar"
-    id="{id}"
-    class:bx--progress-bar__track="{true}"
-    aria-valuemin="{indeterminate ? undefined : 0}"
-    aria-valuemax="{indeterminate ? undefined : max}"
-    aria-valuenow="{indeterminate ? undefined : capped}"
-    aria-describedby="{helperText ? helperId : null}"
+    {id}
+    class:bx--progress-bar__track={true}
+    aria-valuemin={indeterminate ? undefined : 0}
+    aria-valuemax={indeterminate ? undefined : max}
+    aria-valuenow={indeterminate ? undefined : capped}
+    aria-describedby={helperText ? helperId : null}
   >
     <div
-      class:bx--progress-bar__bar="{true}"
+      class:bx--progress-bar__bar={true}
       style="transform: scaleX({capped / max})"
-    ></div>
+    />
   </div>
   {#if helperText}
-    <div id="{helperId}" class:bx--progress-bar__helper-text="{true}">
+    <div id={helperId} class:bx--progress-bar__helper-text={true}>
       {helperText}
     </div>
   {/if}

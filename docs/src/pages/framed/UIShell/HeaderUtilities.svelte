@@ -31,11 +31,11 @@
     <SkipToContent />
   </svelte:fragment>
   <HeaderUtilities>
-    <HeaderGlobalAction aria-label="Settings" icon="{SettingsAdjust}" />
+    <HeaderGlobalAction aria-label="Settings" icon={SettingsAdjust} />
     <HeaderAction
-      bind:isOpen="{isOpen1}"
-      icon="{UserAvatarFilledAlt}"
-      closeIcon="{UserAvatarFilledAlt}"
+      bind:isOpen={isOpen1}
+      icon={UserAvatarFilledAlt}
+      closeIcon={UserAvatarFilledAlt}
     >
       <HeaderPanelLinks>
         <HeaderPanelDivider>Switcher subject 1</HeaderPanelDivider>
@@ -50,7 +50,7 @@
         <HeaderPanelLink>Switcher item 1</HeaderPanelLink>
       </HeaderPanelLinks>
     </HeaderAction>
-    <HeaderAction bind:isOpen="{isOpen2}">
+    <HeaderAction bind:isOpen={isOpen2}>
       <HeaderPanelLinks>
         <HeaderPanelDivider>Switcher subject 1</HeaderPanelDivider>
         <HeaderPanelLink>Switcher item 1</HeaderPanelLink>
@@ -65,7 +65,7 @@
   </HeaderUtilities>
 </Header>
 
-<SideNav bind:isOpen="{isSideNavOpen}">
+<SideNav bind:isOpen={isSideNavOpen}>
   <SideNavItems>
     <SideNavLink text="Link 1" />
     <SideNavLink text="Link 2" />

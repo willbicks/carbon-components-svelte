@@ -64,15 +64,15 @@
       bind:active
       bind:value
       bind:selectedResultIndex
-      results="{results}"
+      {results}
       on:active
       on:inactive
-      on:clear="{() => {
-        console.log('on:clear');
-      }}"
-      on:select="{(e) => {
-        console.log('on:select', e.detail);
-      }}"
+      on:clear={() => {
+        console.log("on:clear");
+      }}
+      on:select={(e) => {
+        console.log("on:select", e.detail);
+      }}
       on:paste
       let:result
       let:index
@@ -94,7 +94,7 @@
   </HeaderUtilities>
 </Header>
 
-<SideNav bind:isOpen="{isSideNavOpen}">
+<SideNav bind:isOpen={isSideNavOpen}>
   <SideNavItems>
     <SideNavLink text="Link 1" />
     <SideNavLink text="Link 2" />

@@ -16,11 +16,11 @@
   viewBox="0 0 32 32"
   fill="currentColor"
   preserveAspectRatio="xMidYMid meet"
-  width="{size}"
-  height="{size}"
+  width={size}
+  height={size}
   {...attributes}
   {...$$restProps}
 >
   {#if title}<title>{title}</title>{/if}
-  <path d="M13 24L4 15 5.414 13.586 13 21.171 26.586 7.586 28 9 13 24z"></path>
+  <path d="M13 24L4 15 5.414 13.586 13 21.171 26.586 7.586 28 9 13 24z" />
 </svg>

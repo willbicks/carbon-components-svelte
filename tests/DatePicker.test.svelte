@@ -4,9 +4,9 @@
 </script>
 
 <DatePicker
-  locale="{Russian}"
+  locale={Russian}
   datePickerType="single"
-  flatpickrProps="{{ static: true }}"
+  flatpickrProps={{ static: true }}
   on:change
 >
   <DatePickerInput labelText="Meeting date" placeholder="mm/dd/yyyy" on:paste />
@@ -14,9 +14,9 @@
 
 <DatePicker
   locale="az"
-  on:change="{(e) => {
+  on:change={(e) => {
     console.log(e.detail);
-  }}"
+  }}
 >
   <DatePickerInput
     labelText="Date of birth"

@@ -5,8 +5,8 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <label
-  class:bx--label="{true}"
-  for="{id}"
+  class:bx--label={true}
+  for={id}
   {...$$restProps}
   on:click
   on:mouseover

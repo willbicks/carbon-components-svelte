@@ -34,7 +34,7 @@
             id="select-theme"
             inline
             labelText="Theme"
-            bind:selected="{$theme}"
+            bind:selected={$theme}
           >
             <SelectItem value="white" text="White" />
             <SelectItem value="g10" text="Gray 10" />
@@ -56,7 +56,7 @@
     </Row>
   </Grid>
 
-  <Column class="table" xlg="{4}" lg="{5}">
+  <Column class="table" xlg={4} lg={5}>
     <div class="toc">
       <h5>Table of Contents</h5>
       <slot name="aside" />

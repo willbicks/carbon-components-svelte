@@ -22,25 +22,25 @@
   sortable
   title="Load balancers"
   description="Your organization's active load balancers."
-  headers="{[
-    { key: 'name', value: 'Name' },
-    { key: 'protocol', value: 'Protocol' },
-    { key: 'port', value: 'Port' },
-    { key: 'rule', value: 'Rule' },
-  ]}"
-  rows="{rows}"
+  headers={[
+    { key: "name", value: "Name" },
+    { key: "protocol", value: "Protocol" },
+    { key: "port", value: "Port" },
+    { key: "rule", value: "Rule" },
+  ]}
+  {rows}
 >
   <Toolbar>
     <ToolbarContent>
       <ToolbarSearch
         persistent
         value="round"
-        shouldFilterRows="{(row, value) => {
+        shouldFilterRows={(row, value) => {
           return (
             /(6|8)$/.test(row.name) &&
             row.rule.toLowerCase().includes(value.toLowerCase())
           );
-        }}"
+        }}
       />
       <ToolbarMenu>
         <ToolbarMenuItem primaryFocus>Restart all</ToolbarMenuItem>

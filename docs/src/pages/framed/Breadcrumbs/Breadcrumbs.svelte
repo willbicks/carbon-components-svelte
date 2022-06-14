@@ -20,10 +20,7 @@
   <Column>
     <Breadcrumb>
       {#each items as item, i}
-        <BreadcrumbItem
-          href="{item.href}"
-          isCurrentPage="{i === items.length - 1}"
-        >
+        <BreadcrumbItem href={item.href} isCurrentPage={i === items.length - 1}>
           {item.text}
         </BreadcrumbItem>
       {/each}

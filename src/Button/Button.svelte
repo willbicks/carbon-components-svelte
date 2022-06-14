@@ -129,21 +129,21 @@
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 {#if skeleton}
   <ButtonSkeleton
-    href="{href}"
-    size="{size}"
+    {href}
+    {size}
     {...$$restProps}
-    style="{hasIconOnly && 'width: 3rem;'}"
+    style={hasIconOnly && "width: 3rem;"}
     on:click
     on:mouseover
     on:mouseenter
     on:mouseleave
   />
 {:else if as}
-  <slot props="{buttonProps}" />
+  <slot props={buttonProps} />
 {:else if href && !disabled}
   <!-- svelte-ignore a11y-missing-attribute -->
   <a
-    bind:this="{ref}"
+    bind:this={ref}
     {...buttonProps}
     on:click
     on:mouseover
@@ -151,18 +151,18 @@
     on:mouseleave
   >
     {#if hasIconOnly}
-      <span class:bx--assistive-text="{true}">{iconDescription}</span>
+      <span class:bx--assistive-text={true}>{iconDescription}</span>
     {/if}
     <slot /><svelte:component
-      this="{icon}"
+      this={icon}
       aria-hidden="true"
       class="bx--btn__icon"
-      aria-label="{iconDescription}"
+      aria-label={iconDescription}
     />
   </a>
 {:else}
   <button
-    bind:this="{ref}"
+    bind:this={ref}
     {...buttonProps}
     on:click
     on:mouseover
@@ -170,13 +170,13 @@
     on:mouseleave
   >
     {#if hasIconOnly}
-      <span class:bx--assistive-text="{true}">{iconDescription}</span>
+      <span class:bx--assistive-text={true}>{iconDescription}</span>
     {/if}
     <slot /><svelte:component
-      this="{icon}"
+      this={icon}
       aria-hidden="true"
       class="bx--btn__icon"
-      aria-label="{iconDescription}"
+      aria-label={iconDescription}
     />
   </button>
 {/if}

@@ -256,16 +256,16 @@
   };
 </script>
 
-<TableContainer useStaticWidth="{useStaticWidth}" {...$$restProps}>
+<TableContainer {useStaticWidth} {...$$restProps}>
   {#if title || $$slots.title || description || $$slots.description}
-    <div class:bx--data-table-header="{true}">
+    <div class:bx--data-table-header={true}>
       {#if title || $$slots.title}
-        <h4 class:bx--data-table-header__title="{true}">
+        <h4 class:bx--data-table-header__title={true}>
           <slot name="title">{title}</slot>
         </h4>
       {/if}
       {#if description || $$slots.description}
-        <p class:bx--data-table-header__description="{true}">
+        <p class:bx--data-table-header__description={true}>
           <slot name="description">{description}</slot>
         </p>
       {/if}
@@ -273,31 +273,31 @@
   {/if}
   <slot />
   <Table
-    zebra="{zebra}"
-    size="{size}"
-    stickyHeader="{stickyHeader}"
-    sortable="{sortable}"
-    useStaticWidth="{useStaticWidth}"
-    tableStyle="{hasCustomHeaderWidth && 'table-layout: fixed'}"
+    {zebra}
+    {size}
+    {stickyHeader}
+    {sortable}
+    {useStaticWidth}
+    tableStyle={hasCustomHeaderWidth && "table-layout: fixed"}
   >
     <TableHead>
       <TableRow>
         {#if expandable}
           <th
             scope="col"
-            class:bx--table-expand="{true}"
-            data-previous-value="{expanded ? 'collapsed' : undefined}"
+            class:bx--table-expand={true}
+            data-previous-value={expanded ? "collapsed" : undefined}
           >
             {#if batchExpansion}
               <button
                 type="button"
-                class:bx--table-expand__button="{true}"
-                on:click="{() => {
+                class:bx--table-expand__button={true}
+                on:click={() => {
                   expanded = !expanded;
                   expandedRowIds = expanded ? expandableRowIds : [];
 
-                  dispatch('click:header--expand', { expanded });
-                }}"
+                  dispatch("click:header--expand", { expanded });
+                }}
               >
                 <ChevronRight class="bx--table-expand__svg" />
               </button>
@@ -305,16 +305,16 @@
           </th>
         {/if}
         {#if selectable && !batchSelection}
-          <th scope="col"></th>
+          <th scope="col" />
         {/if}
         {#if batchSelection && !radio}
-          <th scope="col" class:bx--table-column-checkbox="{true}">
+          <th scope="col" class:bx--table-column-checkbox={true}>
             <InlineCheckbox
-              bind:ref="{refSelectAll}"
+              bind:ref={refSelectAll}
               aria-label="Select all rows"
-              checked="{selectAll}"
-              indeterminate="{indeterminate}"
-              on:change="{(e) => {
+              checked={selectAll}
+              {indeterminate}
+              on:change={(e) => {
                 if (indeterminate) {
                   e.target.checked = false;
                   selectAll = false;
@@ -327,36 +327,36 @@
                 } else {
                   selectedRowIds = [];
                 }
-              }}"
+              }}
             />
           </th>
         {/if}
         {#each headers as header (header.key)}
           {#if header.empty}
-            <th scope="col" style="{formatHeaderWidth(header)}"></th>
+            <th scope="col" style={formatHeaderWidth(header)} />
           {:else}
             <TableHeader
-              id="{header.key}"
-              style="{formatHeaderWidth(header)}"
-              sortable="{sortable && header.sort !== false}"
-              sortDirection="{sortKey === header.key ? sortDirection : 'none'}"
-              active="{sortKey === header.key}"
-              on:click="{() => {
-                dispatch('click', { header });
+              id={header.key}
+              style={formatHeaderWidth(header)}
+              sortable={sortable && header.sort !== false}
+              sortDirection={sortKey === header.key ? sortDirection : "none"}
+              active={sortKey === header.key}
+              on:click={() => {
+                dispatch("click", { header });
 
                 if (header.sort === false) {
-                  dispatch('click:header', { header });
+                  dispatch("click:header", { header });
                 } else {
                   let currentSortDirection =
-                    sortKey === header.key ? sortDirection : 'none';
+                    sortKey === header.key ? sortDirection : "none";
                   sortDirection = sortDirectionMap[currentSortDirection];
                   sortKey =
-                    sortDirection === 'none' ? null : thKeys[header.key];
-                  dispatch('click:header', { header, sortDirection });
+                    sortDirection === "none" ? null : thKeys[header.key];
+                  dispatch("click:header", { header, sortDirection });
                 }
-              }}"
+              }}
             >
-              <slot name="cell-header" header="{header}">{header.value}</slot>
+              <slot name="cell-header" {header}>{header.value}</slot>
             </TableHeader>
           {/if}
         {/each}
@@ -365,8 +365,8 @@
     <TableBody>
       {#each sorting ? displayedSortedRows : displayedRows as row, i (row.id)}
         <TableRow
-          data-row="{row.id}"
-          data-parent-row="{expandable ? true : undefined}"
+          data-row={row.id}
+          data-parent-row={expandable ? true : undefined}
           class="{selectedRowIds.includes(row.id)
             ? 'bx--data-table--selected'
             : ''} {expandedRows[row.id] ? 'bx--expandable-row' : ''} {expandable
@@ -374,7 +374,7 @@
             : ''} {expandable && parentRowId === row.id
             ? 'bx--expandable-row--hover'
             : ''}"
-          on:click="{({ target }) => {
+          on:click={({ target }) => {
             // forgo "click", "click:row" events if target
             // resembles an overflow menu, a checkbox, or radio button
             if (
@@ -384,44 +384,44 @@
             ) {
               return;
             }
-            dispatch('click', { row });
-            dispatch('click:row', row);
-          }}"
-          on:mouseenter="{() => {
-            dispatch('mouseenter:row', row);
-          }}"
-          on:mouseleave="{() => {
-            dispatch('mouseleave:row', row);
-          }}"
+            dispatch("click", { row });
+            dispatch("click:row", row);
+          }}
+          on:mouseenter={() => {
+            dispatch("mouseenter:row", row);
+          }}
+          on:mouseleave={() => {
+            dispatch("mouseleave:row", row);
+          }}
         >
           {#if expandable}
             <TableCell
               class="bx--table-expand"
               headers="expand"
-              data-previous-value="{!nonExpandableRowIds.includes(row.id) &&
+              data-previous-value={!nonExpandableRowIds.includes(row.id) &&
               expandedRows[row.id]
-                ? 'collapsed'
-                : undefined}"
+                ? "collapsed"
+                : undefined}
             >
               {#if !nonExpandableRowIds.includes(row.id)}
                 <button
                   type="button"
-                  class:bx--table-expand__button="{true}"
-                  aria-label="{expandedRows[row.id]
-                    ? 'Collapse current row'
-                    : 'Expand current row'}"
-                  on:click|stopPropagation="{() => {
+                  class:bx--table-expand__button={true}
+                  aria-label={expandedRows[row.id]
+                    ? "Collapse current row"
+                    : "Expand current row"}
+                  on:click|stopPropagation={() => {
                     const rowExpanded = !!expandedRows[row.id];
 
                     expandedRowIds = rowExpanded
                       ? expandedRowIds.filter((id) => id !== row.id)
                       : [...expandedRowIds, row.id];
 
-                    dispatch('click:row--expand', {
+                    dispatch("click:row--expand", {
                       row,
                       expanded: !rowExpanded,
                     });
-                  }}"
+                  }}
                 >
                   <ChevronRight class="bx--table-expand__svg" />
                 </button>
@@ -430,23 +430,23 @@
           {/if}
           {#if selectable}
             <td
-              class:bx--table-column-checkbox="{true}"
-              class:bx--table-column-radio="{radio}"
+              class:bx--table-column-checkbox={true}
+              class:bx--table-column-radio={radio}
             >
               {#if !nonSelectableRowIds.includes(row.id)}
                 {#if radio}
                   <RadioButton
                     name="select-row-{row.id}"
-                    checked="{selectedRowIds.includes(row.id)}"
-                    on:change="{() => {
+                    checked={selectedRowIds.includes(row.id)}
+                    on:change={() => {
                       selectedRowIds = [row.id];
-                    }}"
+                    }}
                   />
                 {:else}
                   <InlineCheckbox
                     name="select-row-{row.id}"
-                    checked="{selectedRowIds.includes(row.id)}"
-                    on:change="{() => {
+                    checked={selectedRowIds.includes(row.id)}
+                    on:change={() => {
                       if (selectedRowIds.includes(row.id)) {
                         selectedRowIds = selectedRowIds.filter(
                           (id) => id !== row.id
@@ -454,7 +454,7 @@
                       } else {
                         selectedRowIds = [...selectedRowIds, row.id];
                       }
-                    }}"
+                    }}
                   />
                 {/if}
               {/if}
@@ -462,31 +462,19 @@
           {/if}
           {#each tableCellsByRowId[row.id] as cell, j (cell.key)}
             {#if headers[j].empty}
-              <td class:bx--table-column-menu="{headers[j].columnMenu}">
-                <slot
-                  name="cell"
-                  row="{row}"
-                  cell="{cell}"
-                  rowIndex="{i}"
-                  cellIndex="{j}"
-                >
+              <td class:bx--table-column-menu={headers[j].columnMenu}>
+                <slot name="cell" {row} {cell} rowIndex={i} cellIndex={j}>
                   {cell.display ? cell.display(cell.value) : cell.value}
                 </slot>
               </td>
             {:else}
               <TableCell
-                on:click="{() => {
-                  dispatch('click', { row, cell });
-                  dispatch('click:cell', cell);
-                }}"
+                on:click={() => {
+                  dispatch("click", { row, cell });
+                  dispatch("click:cell", cell);
+                }}
               >
-                <slot
-                  name="cell"
-                  row="{row}"
-                  cell="{cell}"
-                  rowIndex="{i}"
-                  cellIndex="{j}"
-                >
+                <slot name="cell" {row} {cell} rowIndex={i} cellIndex={j}>
                   {cell.display ? cell.display(cell.value) : cell.value}
                 </slot>
               </TableCell>
@@ -497,22 +485,22 @@
         {#if expandable}
           <tr
             data-child-row
-            class:bx--expandable-row="{true}"
-            on:mouseenter="{() => {
+            class:bx--expandable-row={true}
+            on:mouseenter={() => {
               if (nonExpandableRowIds.includes(row.id)) return;
               parentRowId = row.id;
-            }}"
-            on:mouseleave="{() => {
+            }}
+            on:mouseleave={() => {
               if (nonExpandableRowIds.includes(row.id)) return;
               parentRowId = null;
-            }}"
+            }}
           >
             {#if expandedRows[row.id] && !nonExpandableRowIds.includes(row.id)}
               <TableCell
-                colspan="{selectable ? headers.length + 2 : headers.length + 1}"
+                colspan={selectable ? headers.length + 2 : headers.length + 1}
               >
-                <div class:bx--child-row-inner-container="{true}">
-                  <slot name="expanded-row" row="{row}" />
+                <div class:bx--child-row-inner-container={true}>
+                  <slot name="expanded-row" {row} />
                 </div>
               </TableCell>
             {/if}

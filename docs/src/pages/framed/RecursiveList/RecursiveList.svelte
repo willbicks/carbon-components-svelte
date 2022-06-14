@@ -29,4 +29,4 @@
   ];
 </script>
 
-<RecursiveList children="{children}" />
+<RecursiveList {children} />

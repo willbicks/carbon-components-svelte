@@ -41,14 +41,11 @@
 
 <Button size="small">Manage</Button>
 
-<Tooltip triggerText="Resource list" icon="{Catalog}">
+<Tooltip triggerText="Resource list" icon={Catalog}>
   <p>Resources are provisioned based on your account's organization.</p>
 </Tooltip>
 
 <Tooltip triggerText="Resource list">
-  <div
-    slot="icon"
-    style="width: 1rem; height: 1rem; outline: 1px solid red;"
-  ></div>
+  <div slot="icon" style="width: 1rem; height: 1rem; outline: 1px solid red;" />
   <p>Resources are provisioned based on your account's organization.</p>
 </Tooltip>

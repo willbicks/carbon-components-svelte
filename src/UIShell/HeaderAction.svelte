@@ -49,34 +49,34 @@
 </script>
 
 <svelte:window
-  on:click="{({ target }) => {
+  on:click={({ target }) => {
     if (isOpen && !ref.contains(target) && !refPanel.contains(target)) {
       isOpen = false;
-      dispatch('close');
+      dispatch("close");
     }
-  }}"
+  }}
 />
 
 <button
-  bind:this="{ref}"
+  bind:this={ref}
   type="button"
-  class:bx--header__action="{true}"
-  class:bx--header__action--active="{isOpen}"
-  class:action-text="{text}"
+  class:bx--header__action={true}
+  class:bx--header__action--active={isOpen}
+  class:action-text={text}
   {...$$restProps}
   on:click
-  on:click|stopPropagation="{() => {
+  on:click|stopPropagation={() => {
     isOpen = !isOpen;
-    dispatch(isOpen ? 'open' : 'close');
-  }}"
+    dispatch(isOpen ? "open" : "close");
+  }}
 >
   {#if isOpen}
     <slot name="closeIcon">
-      <svelte:component this="{closeIcon}" size="{20}" />
+      <svelte:component this={closeIcon} size={20} />
     </slot>
   {:else}
     <slot name="icon">
-      <svelte:component this="{icon}" size="{20}" />
+      <svelte:component this={icon} size={20} />
     </slot>
   {/if}
   <slot name="text">
@@ -85,13 +85,13 @@
 </button>
 {#if isOpen}
   <div
-    bind:this="{refPanel}"
-    class:bx--header-panel="{true}"
-    class:bx--header-panel--expanded="{true}"
-    transition:slide="{{
+    bind:this={refPanel}
+    class:bx--header-panel={true}
+    class:bx--header-panel--expanded={true}
+    transition:slide={{
       ...transition,
       duration: transition === false ? 0 : transition.duration,
-    }}"
+    }}
   >
     <slot />
   </div>

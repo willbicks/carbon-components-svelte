@@ -183,7 +183,7 @@
 
 {#if !hideLabel}
   <!-- svelte-ignore a11y-label-has-associated-control -->
-  <label id="{labelId}" class:bx--label="{true}">
+  <label id={labelId} class:bx--label={true}>
     <slot name="labelText">{labelText}</slot>
   </label>
 {/if}
@@ -191,15 +191,15 @@
 <ul
   {...$$restProps}
   role="tree"
-  bind:this="{ref}"
-  class:bx--tree="{true}"
-  class:bx--tree--default="{size === 'default'}"
-  class:bx--tree--compact="{size === 'compact'}"
-  aria-label="{hideLabel ? labelText : undefined}"
-  aria-labelledby="{!hideLabel ? labelId : undefined}"
-  aria-multiselectable="{selectedIds.length > 1 || undefined}"
+  bind:this={ref}
+  class:bx--tree={true}
+  class:bx--tree--default={size === "default"}
+  class:bx--tree--compact={size === "compact"}
+  aria-label={hideLabel ? labelText : undefined}
+  aria-labelledby={!hideLabel ? labelId : undefined}
+  aria-multiselectable={selectedIds.length > 1 || undefined}
   on:keydown
-  on:keydown|stopPropagation="{handleKeyDown}"
+  on:keydown|stopPropagation={handleKeyDown}
 >
-  <TreeViewNodeList root children="{children}" />
+  <TreeViewNodeList root {children} />
 </ul>

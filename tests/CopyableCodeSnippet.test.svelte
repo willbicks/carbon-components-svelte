@@ -5,4 +5,4 @@
   import { CodeSnippet } from "../types";
 </script>
 
-<CodeSnippet on:click="{() => copy(code)}">{code}</CodeSnippet>
+<CodeSnippet on:click={() => copy(code)}>{code}</CodeSnippet>

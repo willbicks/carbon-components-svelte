@@ -46,19 +46,15 @@
 
 <div>
   <Button
-    on:click="{() => {
+    on:click={() => {
       treeview?.expandNodes((node) => /^IBM/.test(node.text));
-    }}"
+    }}
   >
     Expand nodes starting with "IBM"
   </Button>
 </div>
 
-<TreeView
-  bind:this="{treeview}"
-  labelText="Cloud Products"
-  children="{children}"
-/>
+<TreeView bind:this={treeview} labelText="Cloud Products" {children} />
 
 <style>
   div {

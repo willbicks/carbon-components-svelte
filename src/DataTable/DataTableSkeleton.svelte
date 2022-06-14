@@ -43,33 +43,34 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  class:bx--skeleton="{true}"
-  class:bx--data-table-container="{true}"
+  class:bx--skeleton={true}
+  class:bx--data-table-container={true}
   {...$$restProps}
 >
   {#if showHeader}
-    <div class:bx--data-table-header="{true}">
-      <div class:bx--data-table-header__title="{true}"></div>
-      <div class:bx--data-table-header__description="{true}"></div>
+    <div class:bx--data-table-header={true}>
+      <div class:bx--data-table-header__title={true} />
+      <div class:bx--data-table-header__description={true} />
     </div>
   {/if}
   {#if showToolbar}
-    <section aria-label="data table toolbar" class:bx--table-toolbar="{true}">
-      <div class:bx--toolbar-content="{true}">
+    <section aria-label="data table toolbar" class:bx--table-toolbar={true}>
+      <div class:bx--toolbar-content={true}>
         <span
-          class:bx--skeleton="{true}"
-          class:bx--btn="{true}"
-          class:bx--btn--sm="{true}"></span>
+          class:bx--skeleton={true}
+          class:bx--btn={true}
+          class:bx--btn--sm={true}
+        />
       </div>
     </section>
   {/if}
   <table
-    class:bx--skeleton="{true}"
-    class:bx--data-table="{true}"
-    class:bx--data-table--compact="{size === 'compact'}"
-    class:bx--data-table--short="{size === 'short'}"
-    class:bx--data-table--tall="{size === 'tall'}"
-    class:bx--data-table--zebra="{zebra}"
+    class:bx--skeleton={true}
+    class:bx--data-table={true}
+    class:bx--data-table--compact={size === "compact"}
+    class:bx--data-table--short={size === "short"}
+    class:bx--data-table--tall={size === "tall"}
+    class:bx--data-table--zebra={zebra}
     on:click
     on:mouseover
     on:mouseenter
@@ -79,7 +80,7 @@
       <tr>
         {#each cols as col (col)}
           {#if typeof values[col] === "object" && values[col].empty === true}
-            <th></th>
+            <th />
           {:else}
             <th>{values[col] || ""}</th>
           {/if}
@@ -90,7 +91,7 @@
       {#each Array.from({ length: rows }, (_, i) => i) as row (row)}
         <tr>
           {#each cols as col (col)}
-            <td><span></span></td>
+            <td><span /></td>
           {/each}
         </tr>
       {/each}

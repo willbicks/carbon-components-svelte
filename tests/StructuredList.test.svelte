@@ -91,4 +91,4 @@
   </StructuredListBody>
 </StructuredList>
 
-<StructuredListSkeleton rows="{3}" />
+<StructuredListSkeleton rows={3} />

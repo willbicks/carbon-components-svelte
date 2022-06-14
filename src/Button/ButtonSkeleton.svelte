@@ -15,15 +15,15 @@
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 {#if href}
   <a
-    href="{href}"
-    rel="{$$restProps.target === '_blank' ? 'noopener noreferrer' : undefined}"
+    {href}
+    rel={$$restProps.target === "_blank" ? "noopener noreferrer" : undefined}
     role="button"
-    class:bx--skeleton="{true}"
-    class:bx--btn="{true}"
-    class:bx--btn--field="{size === 'field'}"
-    class:bx--btn--sm="{size === 'small'}"
-    class:bx--btn--lg="{size === 'lg'}"
-    class:bx--btn--xl="{size === 'xl'}"
+    class:bx--skeleton={true}
+    class:bx--btn={true}
+    class:bx--btn--field={size === "field"}
+    class:bx--btn--sm={size === "small"}
+    class:bx--btn--lg={size === "lg"}
+    class:bx--btn--xl={size === "xl"}
     {...$$restProps}
     on:click
     on:mouseover
@@ -34,16 +34,16 @@
   </a>
 {:else}
   <div
-    class:bx--skeleton="{true}"
-    class:bx--btn="{true}"
-    class:bx--btn--field="{size === 'field'}"
-    class:bx--btn--sm="{size === 'small'}"
-    class:bx--btn--lg="{size === 'lg'}"
-    class:bx--btn--xl="{size === 'xl'}"
+    class:bx--skeleton={true}
+    class:bx--btn={true}
+    class:bx--btn--field={size === "field"}
+    class:bx--btn--sm={size === "small"}
+    class:bx--btn--lg={size === "lg"}
+    class:bx--btn--xl={size === "xl"}
     {...$$restProps}
     on:click
     on:mouseover
     on:mouseenter
     on:mouseleave
-  ></div>
+  />
 {/if}

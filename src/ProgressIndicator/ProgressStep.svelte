@@ -52,52 +52,52 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <li
-  aria-disabled="{disabled}"
-  id="{id}"
-  class:bx--progress-step="{true}"
-  class:bx--progress-step--current="{current}"
-  class:bx--progress-step--complete="{complete}"
-  class:bx--progress-step--incomplete="{!complete && !current}"
-  class:bx--progress-step--disabled="{disabled}"
+  aria-disabled={disabled}
+  {id}
+  class:bx--progress-step={true}
+  class:bx--progress-step--current={current}
+  class:bx--progress-step--complete={complete}
+  class:bx--progress-step--incomplete={!complete && !current}
+  class:bx--progress-step--disabled={disabled}
   {...$$restProps}
 >
   <button
-    disabled="{disabled}"
-    aria-disabled="{disabled}"
-    tabindex="{!current && !disabled ? '0' : '-1'}"
-    class:bx--progress-step-button="{true}"
-    class:bx--progress-step-button--unclickable="{current}"
+    {disabled}
+    aria-disabled={disabled}
+    tabindex={!current && !disabled ? "0" : "-1"}
+    class:bx--progress-step-button={true}
+    class:bx--progress-step-button--unclickable={current}
     on:click
-    on:click="{() => {
+    on:click={() => {
       if (!step.complete) return;
       change(step.index);
-    }}"
+    }}
     on:mouseover
     on:mouseenter
     on:mouseleave
     on:keydown
-    on:keydown="{(e) => {
+    on:keydown={(e) => {
       if (!step.complete) return;
-      if (e.key === ' ' || e.key === 'Enter') {
+      if (e.key === " " || e.key === "Enter") {
         change(step.index);
       }
-    }}"
+    }}
   >
     {#if invalid}
-      <Warning class="bx--progress__warning" title="{description}" />
+      <Warning class="bx--progress__warning" title={description} />
     {:else if current}
-      <Incomplete title="{description}" />
+      <Incomplete title={description} />
     {:else if complete}
-      <CheckmarkOutline title="{description}" />
+      <CheckmarkOutline title={description} />
     {:else}
-      <CircleDash title="{description}" />
+      <CircleDash title={description} />
     {/if}
-    <slot props="{{ class: 'bx--progress-label' }}">
-      <p class:bx--progress-label="{true}">{label}</p>
+    <slot props={{ class: "bx--progress-label" }}>
+      <p class:bx--progress-label={true}>{label}</p>
     </slot>
     {#if secondaryLabel}
-      <p class:bx--progress-optional="{true}">{secondaryLabel}</p>
+      <p class:bx--progress-optional={true}>{secondaryLabel}</p>
     {/if}
-    <span class:bx--progress-line="{true}"></span>
+    <span class:bx--progress-line={true} />
   </button>
 </li>

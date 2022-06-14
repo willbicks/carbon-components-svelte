@@ -71,8 +71,8 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  id="{id}"
-  class:bx--form-item="{true}"
+  {id}
+  class:bx--form-item={true}
   {...$$restProps}
   on:click
   on:mouseover
@@ -80,14 +80,14 @@
   on:mouseleave
 >
   <fieldset
-    class:bx--radio-button-group="{true}"
-    class:bx--radio-button-group--vertical="{orientation === 'vertical'}"
-    class:bx--radio-button-group--label-left="{labelPosition === 'left'}"
-    class:bx--radio-button-group--label-right="{labelPosition === 'right'}"
-    disabled="{disabled}"
+    class:bx--radio-button-group={true}
+    class:bx--radio-button-group--vertical={orientation === "vertical"}
+    class:bx--radio-button-group--label-left={labelPosition === "left"}
+    class:bx--radio-button-group--label-right={labelPosition === "right"}
+    {disabled}
   >
     {#if legendText || $$slots.legendText}
-      <legend class:bx--label="{true}" class:bx--visually-hidden="{hideLegend}">
+      <legend class:bx--label={true} class:bx--visually-hidden={hideLegend}>
         <slot name="legendText">{legendText}</slot>
       </legend>
     {/if}

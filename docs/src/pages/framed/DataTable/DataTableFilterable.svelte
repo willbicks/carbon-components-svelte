@@ -22,13 +22,13 @@
   sortable
   title="Load balancers"
   description="Your organization's active load balancers."
-  headers="{[
-    { key: 'name', value: 'Name' },
-    { key: 'protocol', value: 'Protocol' },
-    { key: 'port', value: 'Port' },
-    { key: 'rule', value: 'Rule' },
-  ]}"
-  rows="{rows}"
+  headers={[
+    { key: "name", value: "Name" },
+    { key: "protocol", value: "Protocol" },
+    { key: "port", value: "Port" },
+    { key: "rule", value: "Rule" },
+  ]}
+  {rows}
 >
   <Toolbar>
     <ToolbarContent>

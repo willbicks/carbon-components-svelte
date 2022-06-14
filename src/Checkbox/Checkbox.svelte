@@ -80,8 +80,8 @@
   />
 {:else}
   <div
-    class:bx--form-item="{true}"
-    class:bx--checkbox-wrapper="{true}"
+    class:bx--form-item={true}
+    class:bx--checkbox-wrapper={true}
     {...$$restProps}
     on:click
     on:mouseover
@@ -89,18 +89,18 @@
     on:mouseleave
   >
     <input
-      bind:this="{ref}"
+      bind:this={ref}
       type="checkbox"
-      value="{value}"
-      checked="{checked}"
-      disabled="{disabled}"
-      id="{id}"
-      indeterminate="{indeterminate}"
-      name="{name}"
-      required="{required}"
-      readonly="{readonly}"
-      class:bx--checkbox="{true}"
-      on:change="{() => {
+      {value}
+      {checked}
+      {disabled}
+      {id}
+      {indeterminate}
+      {name}
+      {required}
+      {readonly}
+      class:bx--checkbox={true}
+      on:change={() => {
         if (useGroup) {
           group = group.includes(value)
             ? group.filter((_value) => _value !== value)
@@ -108,15 +108,15 @@
         } else {
           checked = !checked;
         }
-      }}"
+      }}
       on:change
       on:blur
     />
-    <label for="{id}" title="{title}" class:bx--checkbox-label="{true}">
+    <label for={id} {title} class:bx--checkbox-label={true}>
       <span
-        bind:this="{refLabel}"
-        class:bx--checkbox-label-text="{true}"
-        class:bx--visually-hidden="{hideLabel}"
+        bind:this={refLabel}
+        class:bx--checkbox-label-text={true}
+        class:bx--visually-hidden={hideLabel}
       >
         <slot name="labelText">
           {labelText}

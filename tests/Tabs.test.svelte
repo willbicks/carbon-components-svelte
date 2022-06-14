@@ -36,4 +36,4 @@
 
 <TabContent>Content 3</TabContent>
 
-<TabsSkeleton count="{3}" />
+<TabsSkeleton count={3} />

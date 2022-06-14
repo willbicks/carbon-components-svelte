@@ -16,12 +16,15 @@
   viewBox="0 0 32 32"
   fill="currentColor"
   preserveAspectRatio="xMidYMid meet"
-  width="{size}"
-  height="{size}"
+  width={size}
+  height={size}
   {...attributes}
   {...$$restProps}
 >
   {#if title}<title>{title}</title>{/if}
-  <circle cx="8" cy="16" r="2"></circle><circle cx="16" cy="16" r="2"
-  ></circle><circle cx="24" cy="16" r="2"></circle>
+  <circle cx="8" cy="16" r="2" /><circle cx="16" cy="16" r="2" /><circle
+    cx="24"
+    cy="16"
+    r="2"
+  />
 </svg>

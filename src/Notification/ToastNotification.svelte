@@ -61,40 +61,37 @@
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 {#if open}
   <div
-    role="{role}"
-    kind="{kind}"
-    class:bx--toast-notification="{true}"
-    class:bx--toast-notification--low-contrast="{lowContrast}"
-    class:bx--toast-notification--error="{kind === 'error'}"
-    class:bx--toast-notification--info="{kind === 'info'}"
-    class:bx--toast-notification--info-square="{kind === 'info-square'}"
-    class:bx--toast-notification--success="{kind === 'success'}"
-    class:bx--toast-notification--warning="{kind === 'warning'}"
-    class:bx--toast-notification--warning-alt="{kind === 'warning-alt'}"
+    {role}
+    {kind}
+    class:bx--toast-notification={true}
+    class:bx--toast-notification--low-contrast={lowContrast}
+    class:bx--toast-notification--error={kind === "error"}
+    class:bx--toast-notification--info={kind === "info"}
+    class:bx--toast-notification--info-square={kind === "info-square"}
+    class:bx--toast-notification--success={kind === "success"}
+    class:bx--toast-notification--warning={kind === "warning"}
+    class:bx--toast-notification--warning-alt={kind === "warning-alt"}
     {...$$restProps}
     on:click
     on:mouseover
     on:mouseenter
     on:mouseleave
   >
-    <NotificationIcon kind="{kind}" />
-    <div class:bx--toast-notification__details="{true}">
-      <h3 class:bx--toast-notification__title="{true}">
+    <NotificationIcon {kind} />
+    <div class:bx--toast-notification__details={true}>
+      <h3 class:bx--toast-notification__title={true}>
         <slot name="title">{title}</slot>
       </h3>
-      <div class:bx--toast-notification__subtitle="{true}">
+      <div class:bx--toast-notification__subtitle={true}>
         <slot name="subtitle">{subtitle}</slot>
       </div>
-      <div class:bx--toast-notification__caption="{true}">
+      <div class:bx--toast-notification__caption={true}>
         <slot name="caption">{caption}</slot>
       </div>
       <slot />
     </div>
     {#if !hideCloseButton}
-      <NotificationButton
-        iconDescription="{iconDescription}"
-        on:click="{close}"
-      />
+      <NotificationButton {iconDescription} on:click={close} />
     {/if}
   </div>
 {/if}

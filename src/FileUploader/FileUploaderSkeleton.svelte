@@ -5,7 +5,7 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  class:bx--form-item="{true}"
+  class:bx--form-item={true}
   {...$$restProps}
   on:click
   on:mouseover

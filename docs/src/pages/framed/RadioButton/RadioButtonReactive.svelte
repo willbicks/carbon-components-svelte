@@ -10,9 +10,9 @@
   let plan = plans[1];
 </script>
 
-<RadioButtonGroup legendText="Storage tier (disk)" bind:selected="{plan}">
+<RadioButtonGroup legendText="Storage tier (disk)" bind:selected={plan}>
   {#each plans as value}
-    <RadioButton labelText="{value}" value="{value}" />
+    <RadioButton labelText={value} {value} />
   {/each}
 </RadioButtonGroup>
 
@@ -20,8 +20,8 @@
   {#each plans as value}
     <Button
       kind="secondary"
-      disabled="{plan === value}"
-      on:click="{() => (plan = value)}"
+      disabled={plan === value}
+      on:click={() => (plan = value)}
     >
       Select "{value}"
     </Button>

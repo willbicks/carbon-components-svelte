@@ -58,30 +58,30 @@
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 {#if open}
   <div
-    role="{role}"
-    kind="{kind}"
-    class:bx--inline-notification="{true}"
-    class:bx--inline-notification--low-contrast="{lowContrast}"
-    class:bx--inline-notification--hide-close-button="{hideCloseButton}"
-    class:bx--inline-notification--error="{kind === 'error'}"
-    class:bx--inline-notification--info="{kind === 'info'}"
-    class:bx--inline-notification--info-square="{kind === 'info-square'}"
-    class:bx--inline-notification--success="{kind === 'success'}"
-    class:bx--inline-notification--warning="{kind === 'warning'}"
-    class:bx--inline-notification--warning-alt="{kind === 'warning-alt'}"
+    {role}
+    {kind}
+    class:bx--inline-notification={true}
+    class:bx--inline-notification--low-contrast={lowContrast}
+    class:bx--inline-notification--hide-close-button={hideCloseButton}
+    class:bx--inline-notification--error={kind === "error"}
+    class:bx--inline-notification--info={kind === "info"}
+    class:bx--inline-notification--info-square={kind === "info-square"}
+    class:bx--inline-notification--success={kind === "success"}
+    class:bx--inline-notification--warning={kind === "warning"}
+    class:bx--inline-notification--warning-alt={kind === "warning-alt"}
     {...$$restProps}
     on:click
     on:mouseover
     on:mouseenter
     on:mouseleave
   >
-    <div class:bx--inline-notification__details="{true}">
-      <NotificationIcon notificationType="inline" kind="{kind}" />
-      <div class:bx--inline-notification__text-wrapper="{true}">
-        <p class:bx--inline-notification__title="{true}">
+    <div class:bx--inline-notification__details={true}>
+      <NotificationIcon notificationType="inline" {kind} />
+      <div class:bx--inline-notification__text-wrapper={true}>
+        <p class:bx--inline-notification__title={true}>
           <slot name="title">{title}</slot>
         </p>
-        <div class:bx--inline-notification__subtitle="{true}">
+        <div class:bx--inline-notification__subtitle={true}>
           <slot name="subtitle">{subtitle}</slot>
         </div>
         <slot />
@@ -90,9 +90,9 @@
     <slot name="actions" />
     {#if !hideCloseButton}
       <NotificationButton
-        iconDescription="{iconDescription}"
+        {iconDescription}
         notificationType="inline"
-        on:click="{close}"
+        on:click={close}
       />
     {/if}
   </div>

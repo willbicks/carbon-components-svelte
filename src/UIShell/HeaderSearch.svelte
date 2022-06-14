@@ -54,48 +54,48 @@
 </script>
 
 <svelte:window
-  on:mouseup="{({ target }) => {
+  on:mouseup={({ target }) => {
     if (active && !refSearch.contains(target)) active = false;
-  }}"
+  }}
 />
 
-<div bind:this="{refSearch}" role="search" class:active>
+<div bind:this={refSearch} role="search" class:active>
   <label for="search-input" id="search-label">Search</label>
-  <div role="combobox" aria-expanded="{active}">
+  <div role="combobox" aria-expanded={active}>
     <button
       type="button"
       aria-label="Search"
-      tabindex="{active ? '-1' : '0'}"
-      class:bx--header__action="{true}"
-      class:disabled="{active}"
-      on:click="{() => {
+      tabindex={active ? "-1" : "0"}
+      class:bx--header__action={true}
+      class:disabled={active}
+      on:click={() => {
         active = true;
-      }}"
+      }}
     >
-      <IconSearch size="{20}" title="Search" />
+      <IconSearch size={20} title="Search" />
     </button>
     <input
-      bind:this="{ref}"
+      bind:this={ref}
       type="text"
       autocomplete="off"
       placeholder="Search..."
-      tabindex="{active ? '0' : '-1'}"
+      tabindex={active ? "0" : "-1"}
       class:active
       {...$$restProps}
       id="search-input"
-      aria-activedescendant="{selectedId}"
+      aria-activedescendant={selectedId}
       bind:value
       on:change
       on:input
       on:focus
       on:blur
       on:keydown
-      on:keydown="{(e) => {
+      on:keydown={(e) => {
         switch (e.key) {
-          case 'Enter':
+          case "Enter":
             selectResult();
             break;
-          case 'ArrowDown':
+          case "ArrowDown":
             e.preventDefault();
             if (selectedResultIndex === results.length - 1) {
               selectedResultIndex = 0;
@@ -103,7 +103,7 @@
               selectedResultIndex += 1;
             }
             break;
-          case 'ArrowUp':
+          case "ArrowUp":
             e.preventDefault();
             if (selectedResultIndex === 0) {
               selectedResultIndex = results.length - 1;
@@ -112,21 +112,21 @@
             }
             break;
         }
-      }}"
+      }}
       on:paste
     />
     <button
       type="button"
       aria-label="Clear search"
-      tabindex="{active ? '0' : '-1'}"
-      class:bx--header__action="{true}"
-      class:hidden="{!active}"
-      on:click="{() => {
+      tabindex={active ? "0" : "-1"}
+      class:bx--header__action={true}
+      class:hidden={!active}
+      on:click={() => {
         reset();
-        dispatch('clear');
-      }}"
+        dispatch("clear");
+      }}
     >
-      <Close size="{20}" title="Close" />
+      <Close size={20} title="Close" />
     </button>
   </div>
 
@@ -138,15 +138,15 @@
             tabindex="-1"
             id="search-menuitem-{i}"
             role="menuitem"
-            href="{result.href}"
-            class:selected="{selectedId === `search-menuitem-${i}`}"
-            on:click|preventDefault="{async () => {
+            href={result.href}
+            class:selected={selectedId === `search-menuitem-${i}`}
+            on:click|preventDefault={async () => {
               selectedResultIndex = i;
               await tick();
               selectResult();
-            }}"
+            }}
           >
-            <slot result="{result}" index="{i}">
+            <slot {result} index={i}>
               {result.text}
               {#if result.description}<span>– {result.description}</span>{/if}
             </slot>

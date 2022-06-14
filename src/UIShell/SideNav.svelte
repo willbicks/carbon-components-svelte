@@ -46,29 +46,29 @@
   });
 </script>
 
-<svelte:window bind:innerWidth="{winWidth}" />
+<svelte:window bind:innerWidth={winWidth} />
 
 {#if !fixed}
   <div
-    on:click="{() => {
-      dispatch('click:overlay');
+    on:click={() => {
+      dispatch("click:overlay");
       isOpen = false;
-    }}"
-    class:bx--side-nav__overlay="{true}"
-    class:bx--side-nav__overlay-active="{isOpen}"
-  ></div>
+    }}
+    class:bx--side-nav__overlay={true}
+    class:bx--side-nav__overlay-active={isOpen}
+  />
 {/if}
 <nav
-  aria-hidden="{!isOpen}"
-  aria-label="{ariaLabel}"
-  class:bx--side-nav__navigation="{true}"
-  class:bx--side-nav="{true}"
-  class:bx--side-nav--ux="{true}"
-  class:bx--side-nav--expanded="{rail && winWidth >= expansionBreakpoint
+  aria-hidden={!isOpen}
+  aria-label={ariaLabel}
+  class:bx--side-nav__navigation={true}
+  class:bx--side-nav={true}
+  class:bx--side-nav--ux={true}
+  class:bx--side-nav--expanded={rail && winWidth >= expansionBreakpoint
     ? false
-    : isOpen}"
-  class:bx--side-nav--collapsed="{!isOpen && !rail}"
-  class:bx--side-nav--rail="{rail}"
+    : isOpen}
+  class:bx--side-nav--collapsed={!isOpen && !rail}
+  class:bx--side-nav--rail={rail}
   {...$$restProps}
 >
   <slot />

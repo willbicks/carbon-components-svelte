@@ -5,7 +5,7 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
-  class:bx--form-item="{true}"
+  class:bx--form-item={true}
   {...$$restProps}
   on:click
   on:mouseover
@@ -13,7 +13,7 @@
   on:mouseleave
 >
   {#if !hideLabel}
-    <span class:bx--label="{true}" class:bx--skeleton="{true}"></span>
+    <span class:bx--label={true} class:bx--skeleton={true} />
   {/if}
-  <div class:bx--skeleton="{true}" class:bx--text-area="{true}"></div>
+  <div class:bx--skeleton={true} class:bx--text-area={true} />
 </div>

@@ -48,31 +48,31 @@
 </script>
 
 <div
-  class:bx--radio-button-wrapper="{true}"
-  class:bx--radio-button-wrapper--label-left="{labelPosition === 'left'}"
+  class:bx--radio-button-wrapper={true}
+  class:bx--radio-button-wrapper--label-left={labelPosition === "left"}
   {...$$restProps}
 >
   <input
-    bind:this="{ref}"
+    bind:this={ref}
     type="radio"
-    id="{id}"
-    name="{name}"
-    checked="{checked}"
-    disabled="{disabled}"
-    required="{required}"
-    value="{value}"
-    class:bx--radio-button="{true}"
+    {id}
+    {name}
+    {checked}
+    {disabled}
+    {required}
+    {value}
+    class:bx--radio-button={true}
     on:change
-    on:change="{() => {
+    on:change={() => {
       if (ctx) {
         ctx.update(value);
       }
-    }}"
+    }}
   />
-  <label class:bx--radio-button__label="{true}" for="{id}">
-    <span class:bx--radio-button__appearance="{true}"></span>
+  <label class:bx--radio-button__label={true} for={id}>
+    <span class:bx--radio-button__appearance={true} />
     {#if labelText || $$slots.labelText}
-      <span class:bx--visually-hidden="{hideLabel}">
+      <span class:bx--visually-hidden={hideLabel}>
         <slot name="labelText">
           {labelText}
         </slot>

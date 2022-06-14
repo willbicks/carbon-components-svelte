@@ -5,5 +5,5 @@
 
 <CodeSnippet
   code="yarn add -D carbon-components-svelte"
-  copy="{(text) => copy(text)}"
+  copy={(text) => copy(text)}
 />

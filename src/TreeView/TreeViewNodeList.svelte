@@ -74,40 +74,40 @@
   {/each}
 {:else}
   <li
-    bind:this="{ref}"
+    bind:this={ref}
     role="treeitem"
-    id="{id}"
-    tabindex="{disabled ? undefined : -1}"
-    aria-current="{id === $activeNodeId || undefined}"
-    aria-selected="{disabled ? undefined : $selectedNodeIds.includes(id)}"
-    aria-disabled="{disabled}"
-    class:bx--tree-node="{true}"
-    class:bx--tree-parent-node="{true}"
-    class:bx--tree-node--active="{id === $activeNodeId}"
-    class:bx--tree-node--selected="{$selectedNodeIds.includes(id)}"
-    class:bx--tree-node--disabled="{disabled}"
-    class:bx--tree-node--with-icon="{icon}"
-    aria-expanded="{expanded}"
-    on:click|stopPropagation="{() => {
+    {id}
+    tabindex={disabled ? undefined : -1}
+    aria-current={id === $activeNodeId || undefined}
+    aria-selected={disabled ? undefined : $selectedNodeIds.includes(id)}
+    aria-disabled={disabled}
+    class:bx--tree-node={true}
+    class:bx--tree-parent-node={true}
+    class:bx--tree-node--active={id === $activeNodeId}
+    class:bx--tree-node--selected={$selectedNodeIds.includes(id)}
+    class:bx--tree-node--disabled={disabled}
+    class:bx--tree-node--with-icon={icon}
+    aria-expanded={expanded}
+    on:click|stopPropagation={() => {
       if (disabled) return;
       clickNode(node);
-    }}"
-    on:keydown="{(e) => {
+    }}
+    on:keydown={(e) => {
       if (
-        e.key === 'ArrowLeft' ||
-        e.key === 'ArrowRight' ||
-        e.key === 'Enter'
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowRight" ||
+        e.key === "Enter"
       ) {
         e.stopPropagation();
       }
 
-      if (parent && e.key === 'ArrowLeft') {
+      if (parent && e.key === "ArrowLeft") {
         expanded = false;
         expandNode(node, false);
         toggleNode(node);
       }
 
-      if (parent && e.key === 'ArrowRight') {
+      if (parent && e.key === "ArrowRight") {
         if (expanded) {
           ref.lastChild.firstChild.focus();
         } else {
@@ -117,7 +117,7 @@
         }
       }
 
-      if (e.key === 'Enter' || e.key === ' ') {
+      if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         if (disabled) return;
         expanded = !expanded;
@@ -126,34 +126,34 @@
         expandNode(node, expanded);
         ref.focus();
       }
-    }}"
-    on:focus="{() => {
+    }}
+    on:focus={() => {
       focusNode(node);
-    }}"
+    }}
   >
-    <div class:bx--tree-node__label="{true}" bind:this="{refLabel}">
+    <div class:bx--tree-node__label={true} bind:this={refLabel}>
       <span
-        class:bx--tree-parent-node__toggle="{true}"
-        disabled="{disabled}"
-        on:click="{() => {
+        class:bx--tree-parent-node__toggle={true}
+        {disabled}
+        on:click={() => {
           if (disabled) return;
           expanded = !expanded;
           expandNode(node, expanded);
           toggleNode(node);
-        }}"
+        }}
       >
         <CaretDown
           class="bx--tree-parent-node__toggle-icon {expanded &&
             'bx--tree-parent-node__toggle-icon--expanded'}"
         />
       </span>
-      <span class:bx--tree-node__label__details="{true}">
-        <svelte:component this="{icon}" class="bx--tree-node__icon" />
+      <span class:bx--tree-node__label__details={true}>
+        <svelte:component this={icon} class="bx--tree-node__icon" />
         {text}
       </span>
     </div>
     {#if expanded}
-      <ul role="group" class:bx--tree-node__children="{true}">
+      <ul role="group" class:bx--tree-node__children={true}>
         {#each children as child (child.id)}
           {#if Array.isArray(child.children)}
             <svelte:self {...child} />

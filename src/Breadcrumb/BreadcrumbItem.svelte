@@ -21,9 +21,9 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <li
-  class:bx--breadcrumb-item="{true}"
-  class:bx--breadcrumb-item--current="{isCurrentPage &&
-    $$restProps['aria-current'] !== 'page'}"
+  class:bx--breadcrumb-item={true}
+  class:bx--breadcrumb-item--current={isCurrentPage &&
+    $$restProps["aria-current"] !== "page"}
   {...$$restProps}
   on:click
   on:mouseover
@@ -31,15 +31,15 @@
   on:mouseleave
 >
   {#if href}
-    <Link href="{href}" aria-current="{$$restProps['aria-current']}">
+    <Link {href} aria-current={$$restProps["aria-current"]}>
       <slot />
     </Link>
   {:else}
     <slot
-      props="{{
-        'aria-current': $$restProps['aria-current'],
-        class: 'bx--link',
-      }}"
+      props={{
+        "aria-current": $$restProps["aria-current"],
+        class: "bx--link",
+      }}
     />
   {/if}
 </li>

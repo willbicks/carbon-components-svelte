@@ -209,71 +209,67 @@
 </script>
 
 <svelte:window
-  on:click="{({ target }) => {
+  on:click={({ target }) => {
     if (open && ref && !ref.contains(target)) {
       open = false;
     }
-  }}"
+  }}
 />
 
-<div class:bx--list-box__wrapper="{true}">
+<div class:bx--list-box__wrapper={true}>
   {#if titleText}
-    <label
-      for="{id}"
-      class:bx--label="{true}"
-      class:bx--label--disabled="{disabled}"
-    >
+    <label for={id} class:bx--label={true} class:bx--label--disabled={disabled}>
       {titleText}
     </label>
   {/if}
   <ListBox
     class="bx--combo-box {direction === 'top' &&
       'bx--list-box--up'} {!invalid && warn && 'bx--combo-box--warning'}"
-    id="{comboId}"
-    aria-label="{ariaLabel}"
-    disabled="{disabled}"
-    invalid="{invalid}"
-    invalidText="{invalidText}"
-    open="{open}"
-    light="{light}"
-    size="{size}"
-    warn="{warn}"
-    warnText="{warnText}"
+    id={comboId}
+    aria-label={ariaLabel}
+    {disabled}
+    {invalid}
+    {invalidText}
+    {open}
+    {light}
+    {size}
+    {warn}
+    {warnText}
   >
     <ListBoxField
       role="button"
-      aria-expanded="{open}"
-      on:click="{async () => {
+      aria-expanded={open}
+      on:click={async () => {
         if (disabled) return;
         open = true;
         await tick();
         ref.focus();
-      }}"
-      id="{id}"
-      disabled="{disabled}"
-      translateWithId="{translateWithId}"
+      }}
+      {id}
+      {disabled}
+      {translateWithId}
     >
       <input
-        bind:this="{ref}"
+        bind:this={ref}
         bind:value
         tabindex="0"
         autocomplete="off"
         aria-autocomplete="list"
-        aria-expanded="{open}"
-        aria-activedescendant="{highlightedId}"
-        aria-labelledby="{comboId}"
-        aria-disabled="{disabled}"
-        aria-controls="{open ? menuId : undefined}"
-        aria-owns="{open ? menuId : undefined}"
-        disabled="{disabled}"
-        placeholder="{placeholder}"
-        id="{id}"
-        name="{name}"
+        aria-expanded={open}
+        aria-activedescendant={highlightedId}
+        aria-labelledby={comboId}
+        aria-disabled={disabled}
+        aria-controls={open ? menuId : undefined}
+        aria-owns={open ? menuId : undefined}
+        {disabled}
+        {placeholder}
+        {id}
+        {name}
         {...$$restProps}
-        class:bx--text-input="{true}"
-        class:bx--text-input--light="{light}"
-        class:bx--text-input--empty="{value === ''}"
-        on:input="{({ target }) => {
+        class:bx--text-input={true}
+        class:bx--text-input--light={light}
+        class:bx--text-input--empty={value === ""}
+        on:input={({ target }) => {
           if (!open && target.value.length > 0) {
             open = true;
           }
@@ -282,10 +278,10 @@
             clear();
             open = true;
           }
-        }}"
+        }}
         on:keydown
-        on:keydown|stopPropagation="{({ key }) => {
-          if (key === 'Enter') {
+        on:keydown|stopPropagation={({ key }) => {
+          if (key === "Enter") {
             open = !open;
 
             if (
@@ -307,30 +303,30 @@
               }
             }
             highlightedIndex = -1;
-          } else if (key === 'Tab') {
+          } else if (key === "Tab") {
             open = false;
-          } else if (key === 'ArrowDown') {
+          } else if (key === "ArrowDown") {
             change(1);
-          } else if (key === 'ArrowUp') {
+          } else if (key === "ArrowUp") {
             change(-1);
-          } else if (key === 'Escape') {
+          } else if (key === "Escape") {
             open = false;
           }
-        }}"
+        }}
         on:keyup
         on:focus
         on:blur
-        on:blur="{({ relatedTarget }) => {
+        on:blur={({ relatedTarget }) => {
           if (!open || !relatedTarget) return;
           if (
             relatedTarget &&
-            !['INPUT', 'SELECT', 'TEXTAREA'].includes(relatedTarget.tagName) &&
-            relatedTarget.getAttribute('role') !== 'button' &&
-            relatedTarget.getAttribute('role') !== 'searchbox'
+            !["INPUT", "SELECT", "TEXTAREA"].includes(relatedTarget.tagName) &&
+            relatedTarget.getAttribute("role") !== "button" &&
+            relatedTarget.getAttribute("role") !== "searchbox"
           ) {
             ref.focus();
           }
-        }}"
+        }}
         on:paste
       />
       {#if invalid}
@@ -344,36 +340,31 @@
       {#if value}
         <ListBoxSelection
           on:clear
-          on:clear="{clear}"
-          translateWithId="{translateWithIdSelection}"
-          disabled="{disabled}"
-          open="{open}"
+          on:clear={clear}
+          translateWithId={translateWithIdSelection}
+          {disabled}
+          {open}
         />
       {/if}
       <ListBoxMenuIcon
-        on:click="{(e) => {
+        on:click={(e) => {
           if (disabled) return;
           e.stopPropagation();
           open = !open;
-        }}"
-        translateWithId="{translateWithId}"
-        open="{open}"
+        }}
+        {translateWithId}
+        {open}
       />
     </ListBoxField>
     {#if open}
-      <ListBoxMenu
-        aria-label="{ariaLabel}"
-        id="{id}"
-        on:scroll
-        bind:ref="{listRef}"
-      >
+      <ListBoxMenu aria-label={ariaLabel} {id} on:scroll bind:ref={listRef}>
         {#each filteredItems as item, i (item.id)}
           <ListBoxMenuItem
-            id="{item.id}"
-            active="{selectedId === item.id}"
-            highlighted="{highlightedIndex === i}"
-            disabled="{item.disabled}"
-            on:click="{(e) => {
+            id={item.id}
+            active={selectedId === item.id}
+            highlighted={highlightedIndex === i}
+            disabled={item.disabled}
+            on:click={(e) => {
               if (item.disabled) {
                 e.stopPropagation();
                 return;
@@ -384,13 +375,13 @@
               if (filteredItems[i]) {
                 value = filteredItems[i].text;
               }
-            }}"
-            on:mouseenter="{() => {
+            }}
+            on:mouseenter={() => {
               if (item.disabled) return;
               highlightedIndex = i;
-            }}"
+            }}
           >
-            <slot item="{item}" index="{i}">
+            <slot {item} index={i}>
               {itemToString(item)}
             </slot>
             {#if selectedItem && selectedItem.id === item.id}
@@ -403,8 +394,8 @@
   </ListBox>
   {#if !invalid && helperText && !warn}
     <div
-      class:bx--form__helper-text="{true}"
-      class:bx--form__helper-text--disabled="{disabled}"
+      class:bx--form__helper-text={true}
+      class:bx--form__helper-text--disabled={disabled}
     >
       {helperText}
     </div>

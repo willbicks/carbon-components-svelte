@@ -179,7 +179,7 @@
 </script>
 
 <svelte:window
-  on:mousedown="{({ target }) => {
+  on:mousedown={({ target }) => {
     if (open) {
       if (target.contains(refTooltip)) {
         if (refIcon) {
@@ -189,14 +189,14 @@
         }
       }
     }
-  }}"
-  on:click|capture="{({ target }) => {
+  }}
+  on:click|capture={({ target }) => {
     if (open && !ref.contains(target) && !refTooltip.contains(target)) {
       setTimeout(() => {
         open = false;
       });
     }
-  }}"
+  }}
 />
 
 <div
@@ -204,55 +204,55 @@
   style="{open ? 'z-index: 1;' : ''}{$$restProps.style}; position: relative;"
 >
   {#if !hideIcon}
-    <div bind:this="{ref}" id="{triggerId}" class:bx--tooltip__label="{true}">
+    <div bind:this={ref} id={triggerId} class:bx--tooltip__label={true}>
       <slot name="triggerText">{triggerText}</slot>
       <div
-        bind:this="{refIcon}"
+        bind:this={refIcon}
         {...buttonProps}
-        aria-describedby="{tooltipId}"
-        on:mousedown="{onMousedown}"
-        on:focus="{onFocus}"
-        on:keydown="{onKeydown}"
+        aria-describedby={tooltipId}
+        on:mousedown={onMousedown}
+        on:focus={onFocus}
+        on:keydown={onKeydown}
       >
         <slot name="icon">
-          <svelte:component this="{icon}" name="{iconName}" />
+          <svelte:component this={icon} name={iconName} />
         </slot>
       </div>
     </div>
   {:else}
     <div
-      bind:this="{ref}"
+      bind:this={ref}
       {...buttonProps}
-      aria-describedby="{tooltipId}"
-      on:mousedown="{onMousedown}"
-      on:focus="{onFocus}"
-      on:blur="{onBlur}"
-      on:keydown="{onKeydown}"
+      aria-describedby={tooltipId}
+      on:mousedown={onMousedown}
+      on:focus={onFocus}
+      on:blur={onBlur}
+      on:keydown={onKeydown}
     >
       <slot name="triggerText">{triggerText}</slot>
     </div>
   {/if}
   {#if open}
     <div
-      bind:this="{refTooltip}"
-      id="{tooltipId}"
-      data-floating-menu-direction="{direction}"
-      class:bx--tooltip="{true}"
-      class:bx--tooltip--shown="{open}"
-      class:bx--tooltip--top="{direction === 'top'}"
-      class:bx--tooltip--right="{direction === 'right'}"
-      class:bx--tooltip--bottom="{direction === 'bottom'}"
-      class:bx--tooltip--left="{direction === 'left'}"
-      class:bx--tooltip--align-center="{align === 'center'}"
-      class:bx--tooltip--align-start="{align === 'start'}"
-      class:bx--tooltip--align-end="{align === 'end'}"
-      on:keydown="{onKeydown}"
+      bind:this={refTooltip}
+      id={tooltipId}
+      data-floating-menu-direction={direction}
+      class:bx--tooltip={true}
+      class:bx--tooltip--shown={open}
+      class:bx--tooltip--top={direction === "top"}
+      class:bx--tooltip--right={direction === "right"}
+      class:bx--tooltip--bottom={direction === "bottom"}
+      class:bx--tooltip--left={direction === "left"}
+      class:bx--tooltip--align-center={align === "center"}
+      class:bx--tooltip--align-start={align === "start"}
+      class:bx--tooltip--align-end={align === "end"}
+      on:keydown={onKeydown}
     >
-      <span class:bx--tooltip__caret="{true}"></span>
+      <span class:bx--tooltip__caret={true} />
       <div
         on:click|stopPropagation
         on:mousedown|stopPropagation
-        class:bx--tooltip__content="{true}"
+        class:bx--tooltip__content={true}
         tabIndex="-1"
         role="dialog"
       >

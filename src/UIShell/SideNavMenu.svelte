@@ -20,35 +20,35 @@
   import ChevronDown from "../icons/ChevronDown.svelte";
 </script>
 
-<li class:bx--side-nav__item="{true}" class:bx--side-nav__item--icon="{icon}">
+<li class:bx--side-nav__item={true} class:bx--side-nav__item--icon={icon}>
   <button
     type="button"
-    bind:this="{ref}"
-    aria-expanded="{expanded}"
-    class:bx--side-nav__submenu="{true}"
+    bind:this={ref}
+    aria-expanded={expanded}
+    class:bx--side-nav__submenu={true}
     {...$$restProps}
     on:click
-    on:click="{() => {
+    on:click={() => {
       expanded = !expanded;
-    }}"
+    }}
   >
     {#if $$slots.icon || icon}
-      <div class:bx--side-nav__icon="{true}">
+      <div class:bx--side-nav__icon={true}>
         <slot name="icon">
-          <svelte:component this="{icon}" />
+          <svelte:component this={icon} />
         </slot>
       </div>
     {/if}
-    <span class:bx--side-nav__submenu-title="{true}">{text}</span>
+    <span class:bx--side-nav__submenu-title={true}>{text}</span>
     <div
-      class:bx--side-nav__icon="{true}"
-      class:bx--side-nav__icon--small="{true}"
-      class:bx--side-nav__submenu-chevron="{true}"
+      class:bx--side-nav__icon={true}
+      class:bx--side-nav__icon--small={true}
+      class:bx--side-nav__submenu-chevron={true}
     >
-      <svelte:component this="{ChevronDown}" title="Open Menu" tabindex="0" />
+      <svelte:component this={ChevronDown} title="Open Menu" tabindex="0" />
     </div>
   </button>
-  <ul role="menu" class:bx--side-nav__menu="{true}">
+  <ul role="menu" class:bx--side-nav__menu={true}>
     <slot />
   </ul>
 </li>

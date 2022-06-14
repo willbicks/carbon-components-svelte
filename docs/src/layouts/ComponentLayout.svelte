@@ -58,7 +58,7 @@
             id="select-theme"
             inline
             labelText="Theme"
-            bind:selected="{$theme}"
+            bind:selected={$theme}
           >
             <SelectItem value="white" text="White" />
             <SelectItem value="g10" text="Gray 10" />
@@ -70,8 +70,8 @@
             kind="ghost"
             target="_blank"
             size="field"
-            href="{sourceCode}"
-            icon="{Code}"
+            href={sourceCode}
+            icon={Code}
           >
             Source code
           </Button>
@@ -120,28 +120,28 @@
     </Row>
 
     <Row>
-      <Column class="prose" noGutter="{multiple}">
+      <Column class="prose" noGutter={multiple}>
         {#if multiple}
           <Tabs class="override-tabs">
             {#each api_components as component (component.moduleName)}
-              <Tab label="{component.moduleName}" />
+              <Tab label={component.moduleName} />
             {/each}
             <div slot="content" style="padding-top: var(--cds-spacing-06)">
               {#each api_components as component (component.moduleName)}
                 <TabContent>
-                  <ComponentApi component="{component}" />
+                  <ComponentApi {component} />
                 </TabContent>
               {/each}
             </div>
           </Tabs>
         {:else}
-          <ComponentApi component="{api_components[0]}" />
+          <ComponentApi component={api_components[0]} />
         {/if}
       </Column>
     </Row>
   </Grid>
 
-  <Column class="table" xlg="{4}" lg="{5}">
+  <Column class="table" xlg={4} lg={5}>
     <div class="toc">
       <h5>Table of Contents</h5>
       <slot name="aside" />

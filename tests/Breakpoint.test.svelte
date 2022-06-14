@@ -15,10 +15,10 @@
 
 <Breakpoint
   bind:size
-  let:size="{currentSize}"
-  on:change="{(e) => {
+  let:size={currentSize}
+  on:change={(e) => {
     console.log(e.detail);
-  }}"
+  }}
 >
   {currentSize}
 </Breakpoint>

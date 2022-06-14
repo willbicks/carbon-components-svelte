@@ -43,8 +43,8 @@
 <Theme persist>
   <Header
     aria-label="Navigation"
-    href="{$url('/')}"
-    expandedByDefault="{true}"
+    href={$url("/")}
+    expandedByDefault={true}
     bind:isSideNavOpen
   >
     <svelte:fragment slot="skip-to-content">
@@ -58,11 +58,11 @@
 
     <HeaderUtilities>
       <HeaderActionLink
-        icon="{LogoGithub}"
+        icon={LogoGithub}
         href="https://github.com/carbon-design-system/carbon-components-svelte"
         target="_blank"
       />
-      <HeaderAction transition="{false}" bind:isOpen>
+      <HeaderAction transition={false} bind:isOpen>
         <HeaderPanelLinks>
           <HeaderPanelDivider>Carbon Svelte portfolio</HeaderPanelDivider>
           <HeaderPanelLink
@@ -97,17 +97,17 @@
     </HeaderUtilities>
   </Header>
 
-  <SideNav bind:isOpen="{isSideNavOpen}">
+  <SideNav bind:isOpen={isSideNavOpen}>
     <SideNavItems>
       <SideNavMenu
-        expanded="{$isActive($url('')) || $isActive($url('/components'))}"
+        expanded={$isActive($url("")) || $isActive($url("/components"))}
         text="Components"
       >
         {#each components.children.filter((child) => !deprecated.includes(child.title)) as child, i (child.path)}
           <SideNavMenuItem
-            text="{child.title}"
-            href="{$url(child.path)}"
-            isSelected="{$isActive($url(child.path))}"
+            text={child.title}
+            href={$url(child.path)}
+            isSelected={$isActive($url(child.path))}
           >
             {child.title}
             {#if deprecated.includes(child.title)}
@@ -131,11 +131,11 @@
           </SideNavMenuItem>
         {/each}
       </SideNavMenu>
-      <SideNavMenu expanded="{$isActive($url('/recipes'))}" text="Recipes">
+      <SideNavMenu expanded={$isActive($url("/recipes"))} text="Recipes">
         {#each recipes.children as child, i (child.path)}
           <SideNavMenuItem
-            href="{$url(child.path)}"
-            isSelected="{$isActive($url(child.path))}"
+            href={$url(child.path)}
+            isSelected={$isActive($url(child.path))}
           >
             {child.title}
           </SideNavMenuItem>

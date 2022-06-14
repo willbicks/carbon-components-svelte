@@ -88,20 +88,20 @@
 </script>
 
 <Search
-  tabindex="{tabindex}"
-  disabled="{disabled}"
+  {tabindex}
+  {disabled}
   {...$$restProps}
   searchClass="{classes} {$$restProps.class}"
   bind:ref
   bind:value
   on:clear
-  on:clear="{expandSearch}"
+  on:clear={expandSearch}
   on:change
   on:input
   on:focus
-  on:focus="{expandSearch}"
+  on:focus={expandSearch}
   on:blur
-  on:blur="{() => {
+  on:blur={() => {
     expanded = !persistent && !!value.length;
-  }}"
+  }}
 />

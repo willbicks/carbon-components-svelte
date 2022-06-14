@@ -1,7 +1,7 @@
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <div
   role="rowgroup"
-  class:bx--structured-list-tbody="{true}"
+  class:bx--structured-list-tbody={true}
   {...$$restProps}
   on:click
   on:mouseover

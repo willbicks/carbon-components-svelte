@@ -16,17 +16,17 @@
   $: console.log("selectedId", selectedId);
 </script>
 
-<div bind:this="{ref}"></div>
+<div bind:this={ref} />
 
-<ContextMenu target="{null}" open on:open="{(e) => console.log(e.detail)}">
+<ContextMenu target={null} open on:open={(e) => console.log(e.detail)}>
   <ContextMenuOption
     kind="danger"
     indented
     labelText="Copy"
     shortcutText="⌘C"
-    icon="{CopyFile}"
+    icon={CopyFile}
   />
-  <ContextMenuOption indented labelText="Cut" shortcutText="⌘X" icon="{Cut}" />
+  <ContextMenuOption indented labelText="Cut" shortcutText="⌘X" icon={Cut} />
   <ContextMenuDivider />
   <ContextMenuOption indented labelText="Export as">
     <ContextMenuGroup labelText="Export options" bind:selectedIds>
@@ -45,7 +45,7 @@
   </ContextMenuGroup>
 </ContextMenu>
 
-<ContextMenu target="{[null, ref]}" on:open on:close>
+<ContextMenu target={[null, ref]} on:open on:close>
   <ContextMenuOption indented labelText="Open" />
   <ContextMenuDivider />
   <ContextMenuRadioGroup bind:selectedId labelText="Radio group">

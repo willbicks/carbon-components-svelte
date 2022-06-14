@@ -41,7 +41,7 @@
 
 <p style="margin-bottom: var(--cds-layout-02)">
   Source code:
-  <OutboundLink size="lg" inline href="{source}">
+  <OutboundLink size="lg" inline href={source}>
     {component.filePath}
   </OutboundLink>
 </p>
@@ -65,7 +65,7 @@
         }) as prop (prop.name)}
           <StructuredListRow>
             <StructuredListCell noWrap>
-              <InlineSnippet code="{prop.name}" />
+              <InlineSnippet code={prop.name} />
               {#if prop.reactive}
                 <div
                   style="white-space: nowrap; margin-top: var(--cds-spacing-03); margin-bottom: var(--cds-spacing-{prop.isRequired
@@ -99,7 +99,7 @@
                   {:else if type.startsWith("(")}
                     <code>{type}</code>
                   {:else}
-                    <InlineSnippet code="{type}" />
+                    <InlineSnippet code={type} />
                   {/if}
                 </div>
               {/each}

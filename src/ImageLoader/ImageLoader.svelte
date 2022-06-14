@@ -84,16 +84,16 @@
     <img
       {...$$restProps}
       style="width: 100%;{$$restProps.style}"
-      src="{src}"
-      alt="{alt}"
-      transition:fade="{{ duration: fadeIn ? fast02 : 0 }}"
+      {src}
+      {alt}
+      transition:fade={{ duration: fadeIn ? fast02 : 0 }}
     />
   {/if}
   {#if error}
     <slot name="error" />
   {/if}
 {:else}
-  <AspectRatio ratio="{ratio}">
+  <AspectRatio {ratio}>
     {#if loading}
       <slot name="loading" />
     {/if}
@@ -101,9 +101,9 @@
       <img
         {...$$restProps}
         style="width: 100%;{$$restProps.style}"
-        src="{src}"
-        alt="{alt}"
-        transition:fade="{{ duration: fadeIn ? fast02 : 0 }}"
+        {src}
+        {alt}
+        transition:fade={{ duration: fadeIn ? fast02 : 0 }}
       />
     {/if}
     {#if error}

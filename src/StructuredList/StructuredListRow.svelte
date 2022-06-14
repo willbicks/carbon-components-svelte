@@ -13,9 +13,9 @@
 {#if label}
   <!-- svelte-ignore a11y-label-has-associated-control -->
   <label
-    tabindex="{tabindex}"
-    class:bx--structured-list-row="{true}"
-    class:bx--structured-list-row--header-row="{head}"
+    {tabindex}
+    class:bx--structured-list-row={true}
+    class:bx--structured-list-row--header-row={head}
     {...$$restProps}
     on:click
     on:mouseover
@@ -28,8 +28,8 @@
 {:else}
   <div
     role="row"
-    class:bx--structured-list-row="{true}"
-    class:bx--structured-list-row--header-row="{head}"
+    class:bx--structured-list-row={true}
+    class:bx--structured-list-row--header-row={head}
     {...$$restProps}
     on:click
     on:mouseover

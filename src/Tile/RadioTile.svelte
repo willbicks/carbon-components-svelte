@@ -35,45 +35,45 @@
 
 <input
   type="radio"
-  id="{id}"
-  name="{name}"
-  value="{value}"
-  checked="{checked}"
-  tabindex="{disabled ? undefined : tabindex}"
-  disabled="{disabled}"
-  class:bx--tile-input="{true}"
+  {id}
+  {name}
+  {value}
+  {checked}
+  tabindex={disabled ? undefined : tabindex}
+  {disabled}
+  class:bx--tile-input={true}
   on:change
-  on:change="{() => {
+  on:change={() => {
     if (disabled) return;
     update(value);
-  }}"
+  }}
   on:keydown
-  on:keydown="{(e) => {
+  on:keydown={(e) => {
     if (disabled) return;
-    if (e.key === ' ' || e.key === 'Enter') {
+    if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       update(value);
     }
-  }}"
+  }}
 />
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <label
-  for="{id}"
-  class:bx--tile="{true}"
-  class:bx--tile--selectable="{true}"
-  class:bx--tile--is-selected="{checked}"
-  class:bx--tile--light="{light}"
-  class:bx--tile--disabled="{disabled}"
+  for={id}
+  class:bx--tile={true}
+  class:bx--tile--selectable={true}
+  class:bx--tile--is-selected={checked}
+  class:bx--tile--light={light}
+  class:bx--tile--disabled={disabled}
   {...$$restProps}
   on:click
   on:mouseover
   on:mouseenter
   on:mouseleave
 >
-  <span class:bx--tile__checkmark="{true}">
-    <CheckmarkFilled aria-label="{iconDescription}" title="{iconDescription}" />
+  <span class:bx--tile__checkmark={true}>
+    <CheckmarkFilled aria-label={iconDescription} title={iconDescription} />
   </span>
-  <span class:bx--tile-content="{true}">
+  <span class:bx--tile-content={true}>
     <slot />
   </span>
 </label>

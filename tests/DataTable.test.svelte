@@ -71,15 +71,15 @@
 </script>
 
 <DataTable
-  headers="{headers}"
-  rows="{rows}"
+  {headers}
+  {rows}
   style=""
   sortKey="name"
   sortDirection="descending"
   class="class"
 />
 
-<DataTable headers="{headers}" rows="{rows}">
+<DataTable {headers} {rows}>
   <span slot="cell-header" let:header>
     {#if header.key === "port"}
       {header.value}
@@ -103,23 +103,23 @@
 <DataTable
   title="Load balancers"
   description="Your organization's active load balancers."
-  headers="{headers}"
-  rows="{rows}"
+  {headers}
+  {rows}
   useStaticWidth
 />
 
 <DataTable
   title="Load balancers"
   description="Your organization's active load balancers."
-  headers="{headers}"
-  rows="{rows}"
+  {headers}
+  {rows}
 >
   <Toolbar>
     <ToolbarContent>
       <ToolbarSearch
-        shouldFilterRows="{(row, value) => {
+        shouldFilterRows={(row, value) => {
           return row.name.includes(value);
-        }}"
+        }}
       />
       <ToolbarMenu>
         <ToolbarMenuItem primaryFocus>Restart all</ToolbarMenuItem>
@@ -137,8 +137,8 @@
   size="short"
   title="Load balancers"
   description="Your organization's active load balancers."
-  headers="{headers}"
-  rows="{rows}"
+  {headers}
+  {rows}
 >
   <Toolbar size="sm">
     <ToolbarContent>
@@ -155,90 +155,85 @@
   </Toolbar>
 </DataTable>
 
-<DataTable zebra headers="{headers}" rows="{rows}" />
+<DataTable zebra {headers} {rows} />
 
-<DataTable size="tall" headers="{headers}" rows="{rows}" />
+<DataTable size="tall" {headers} {rows} />
 
-<DataTable size="short" headers="{headers}" rows="{rows}" />
+<DataTable size="short" {headers} {rows} />
 
-<DataTable size="compact" headers="{headers}" rows="{rows}" />
+<DataTable size="compact" {headers} {rows} />
 
-<DataTable sortable headers="{headers}" rows="{rows}" />
+<DataTable sortable {headers} {rows} />
 
 <DataTable
   sortable
   title="Load balancers"
   description="Your organization's active load balancers."
-  headers="{[
-    { key: 'name', value: 'Name' },
-    { key: 'protocol', value: 'Protocol' },
-    { key: 'port', value: 'Port' },
-    { key: 'cost', value: 'Cost', display: (cost) => cost + ' €' },
+  headers={[
+    { key: "name", value: "Name" },
+    { key: "protocol", value: "Protocol" },
+    { key: "port", value: "Port" },
+    { key: "cost", value: "Cost", display: (cost) => cost + " €" },
     {
-      key: 'expireDate',
-      value: 'Expire date',
+      key: "expireDate",
+      value: "Expire date",
       display: (date) => new Date(date).toLocaleString(),
       sort,
     },
-  ]}"
-  rows="{[
+  ]}
+  rows={[
     {
       id: 0,
-      name: 'Load Balancer 3',
-      protocol: 'HTTP',
+      name: "Load Balancer 3",
+      protocol: "HTTP",
       port: 3000,
       cost: 100,
-      expireDate: '2020-10-21',
+      expireDate: "2020-10-21",
     },
     {
-      id: 'b',
-      name: 'Load Balancer 1',
-      protocol: 'HTTP',
+      id: "b",
+      name: "Load Balancer 1",
+      protocol: "HTTP",
       port: 443,
       cost: 200,
-      expireDate: '2020-09-10',
+      expireDate: "2020-09-10",
     },
     {
-      id: 'c',
-      name: 'Load Balancer 2',
-      protocol: 'HTTP',
+      id: "c",
+      name: "Load Balancer 2",
+      protocol: "HTTP",
       port: 80,
       cost: 150,
-      expireDate: '2020-11-24',
+      expireDate: "2020-11-24",
     },
     {
-      id: 'd',
-      name: 'Load Balancer 6',
-      protocol: 'HTTP',
+      id: "d",
+      name: "Load Balancer 6",
+      protocol: "HTTP",
       port: 3000,
       cost: 250,
-      expireDate: '2020-12-01',
+      expireDate: "2020-12-01",
     },
     {
-      id: 'e',
-      name: 'Load Balancer 4',
-      protocol: 'HTTP',
+      id: "e",
+      name: "Load Balancer 4",
+      protocol: "HTTP",
       port: 443,
       cost: 550,
-      expireDate: '2021-03-21',
+      expireDate: "2021-03-21",
     },
     {
-      id: 'f',
-      name: 'Load Balancer 5',
-      protocol: 'HTTP',
+      id: "f",
+      name: "Load Balancer 5",
+      protocol: "HTTP",
       port: 80,
       cost: 400,
-      expireDate: '2020-11-14',
+      expireDate: "2020-11-14",
     },
-  ]}"
+  ]}
 />
 
-<DataTable
-  expandable
-  nonExpandableRowIds="{['a', 'b']}"
-  headers="{headers}"
-  rows="{rows}"
->
+<DataTable expandable nonExpandableRowIds={["a", "b"]} {headers} {rows}>
   <div slot="expanded-row" let:row>
     <pre>
       {JSON.stringify(row, null, 2)}
@@ -246,7 +241,7 @@
   </div>
 </DataTable>
 
-<DataTable batchExpansion headers="{headers}" rows="{rows}">
+<DataTable batchExpansion {headers} {rows}>
   <div slot="expanded-row" let:row>
     <pre>
       {JSON.stringify(row, null, 2)}
@@ -256,28 +251,25 @@
 
 <DataTableSkeleton />
 
-<DataTableSkeleton
-  headers="{['Name', 'Protocol', 'Port', 'Rule']}"
-  rows="{10}"
-/>
+<DataTableSkeleton headers={["Name", "Protocol", "Port", "Rule"]} rows={10} />
 
 <DataTableSkeleton
-  headers="{[
-    { value: 'Name' },
-    { value: 'Protocol' },
-    { value: 'Port' },
-    { value: 'Rule' },
+  headers={[
+    { value: "Name" },
+    { value: "Protocol" },
+    { value: "Port" },
+    { value: "Rule" },
     { empty: true },
-  ]}"
-  rows="{10}"
+  ]}
+  rows={10}
 />
 
-<DataTableSkeleton headers="{headers}" rows="{10}" />
+<DataTableSkeleton {headers} rows={10} />
 
-<DataTableSkeleton showHeader="{false}" showToolbar="{false}" />
+<DataTableSkeleton showHeader={false} showToolbar={false} />
 
-<DataTableSkeleton showHeader="{false}" showToolbar="{false}" size="tall" />
+<DataTableSkeleton showHeader={false} showToolbar={false} size="tall" />
 
-<DataTableSkeleton showHeader="{false}" showToolbar="{false}" size="short" />
+<DataTableSkeleton showHeader={false} showToolbar={false} size="short" />
 
-<DataTableSkeleton showHeader="{false}" showToolbar="{false}" size="compact" />
+<DataTableSkeleton showHeader={false} showToolbar={false} size="compact" />

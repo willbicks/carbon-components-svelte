@@ -18,7 +18,7 @@
   ];
 </script>
 
-<DataTable sortable headers="{headers}" rows="{rows}">
+<DataTable sortable {headers} {rows}>
   <span slot="cell" let:cell>
     {#if cell.key === "overflow"}
       <OverflowMenu flipped>

@@ -21,29 +21,29 @@
 
 <FileUploaderButton
   labelText="Add files"
-  on:change="{(e) => {
+  on:change={(e) => {
     console.log(e.detail); // File[]
-  }}"
+  }}
 />
 
 <FileUploader
-  bind:this="{fileUploader}"
+  bind:this={fileUploader}
   multiple
   labelTitle="Upload files"
   buttonLabel="Add files"
   labelDescription="Only JPEG files are accepted."
-  accept="{['.jpg', '.jpeg']}"
+  accept={[".jpg", ".jpeg"]}
   status="complete"
   bind:files
-  on:add="{(e) => {
+  on:add={(e) => {
     console.log(e.detail); // File[]
-  }}"
-  on:remove="{(e) => {
+  }}
+  on:remove={(e) => {
     console.log(e.detail); // File[]
-  }}"
-  on:change="{(e) => {
+  }}
+  on:change={(e) => {
     console.log(e.detail); // File[]
-  }}"
+  }}
 />
 
 <FileUploaderItem name="README.md" status="uploading" />

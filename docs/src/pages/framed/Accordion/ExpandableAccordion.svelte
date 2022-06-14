@@ -25,9 +25,9 @@
 <Button
   kind="ghost"
   size="field"
-  on:click="{() => {
+  on:click={() => {
     open = !open;
-  }}"
+  }}
 >
   {open ? "Collapse" : "Expand"}
   all
@@ -35,7 +35,7 @@
 
 <Accordion>
   {#each items as item}
-    <AccordionItem open="{open}">
+    <AccordionItem {open}>
       <h5 slot="title">{item.title}</h5>
       <p>{item.description}</p>
     </AccordionItem>
